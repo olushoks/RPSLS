@@ -2,25 +2,21 @@ const prompt = require("prompt-sync")();
 const gesture = require("./gestures");
 
 class Players {
-  constructor(name) {
-    this.name = name;
+  constructor() {
     this.score = 0;
     this.gestures = gesture; // array of possible gestures
-    this.currentGesture = this.currentGesture;
+    this.currentGesture;
+  }
+  makeGesture() {
+    let gestureIndex;
+    console.log(`Your turn ${this.name}\n`);
+    console.log(
+      `Make your gesture:\n\n1 for ROCK | 2 for PAPER | 3 for SCISSORS | 4 for Lzard | 5 for SPOCK`
+    );
+    gestureIndex = +prompt();
+    this.currentGesture = this.gestures[gestureIndex - 1];
+    console.log(this.currentGesture);
   }
 }
 
-class AI extends Players {
-  constructor(name) {
-    super(name);
-  }
-  randomGesture() {
-    let random = Math.trunc(Math.random() * 5);
-    return this.gesture[random];
-  }
-}
-
-module.exports = {
-  player: Players,
-  computer: AI,
-};
+module.exports = Players;

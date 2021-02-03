@@ -1,4 +1,5 @@
-const { player, computer } = require("./players");
+const player = require("./players");
+const computer = require("./AI");
 const prompt = require("prompt-sync")();
 
 class Game {
@@ -31,23 +32,35 @@ class Game {
         players.push(prompt());
         players.push("Computer");
         break;
-      case 3:
-        return;
+      // case 3:
+      //   console.log(`Game Over`);
+      //   return;
       default:
         this.selectMode();
     }
     return players;
     // console.log(players);
   }
-  startPlay() {
+  assignPlayers() {
     let players = this.selectMode();
-    let player1 = new player();
-    let player2 = players[1] == "Computer" ? new computer() : new player();
+    let player1, player2;
+    if (players.length > 0) {
+      player1 = new player();
+      player2 = players[1] == "Computer" ? new computer() : new player();
 
-    player1.name = players[0];
-    player2.name = players[1];
+      player1.name = players[0];
+      player2.name = players[1];
 
-    console.log(`${player1.name} Vs. ${player2.name}`);
+      console.log(`${player1.name} Vs. ${player2.name}\n\nGame Loading...`);
+      console.log(`Get ready...`);
+      console.log(`GO!!!\n\n`);
+    }
+    return [player1, player2];
+  }
+  startGame() {
+    let [player1, player2] = this.assignPlayers();
+    player1.makeGesture();
+    player2.makeGesture();
   }
 }
 
