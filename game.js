@@ -1,5 +1,4 @@
 const { player, computer } = require("./players");
-
 const prompt = require("prompt-sync")();
 
 class Game {
@@ -30,7 +29,7 @@ class Game {
       case 2:
         console.log(`Enter  Player's name:`);
         players.push(prompt());
-        // players.push("Computer");
+        players.push("Computer");
         break;
       case 3:
         return;
@@ -43,8 +42,12 @@ class Game {
   startPlay() {
     let players = this.selectMode();
     let player1 = new player();
-    let player2 = players[1] ?? "Computer";
-    console.log(`${player1} Vs. ${player2}`);
+    let player2 = players[1] == "Computer" ? new computer() : new player();
+
+    player1.name = players[0];
+    player2.name = players[1];
+
+    console.log(`${player1.name} Vs. ${player2.name}`);
   }
 }
 
