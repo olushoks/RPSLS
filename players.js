@@ -7,7 +7,7 @@ class Players {
   }
 }
 
-class Computer extends Players {
+class AI extends Players {
   constructor() {
     super();
   }
@@ -15,5 +15,5 @@ class Computer extends Players {
 
 module.exports = {
   player: Players,
-  computer: Computer,
+  computer: AI,
 };

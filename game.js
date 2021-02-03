@@ -42,7 +42,7 @@ class Game {
   }
   startPlay() {
     let players = this.selectMode();
-    let player1 = players[0];
+    let player1 = new player();
     let player2 = players[1] ?? "Computer";
     console.log(`${player1} Vs. ${player2}`);
   }
