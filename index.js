@@ -1,8 +1,4 @@
-// const prompt = require("prompt-sync")();
-//const gesture = require("./gestures");
-// const player = require("./players");
 const game = require("./game");
 
-let runGame = new game(); // Initializes
-runGame.startGame();
-//runGame.assignPlayers();
+let runGame = new game(); // Instance of Game Class
+runGame.startGame(); // Initialize Game

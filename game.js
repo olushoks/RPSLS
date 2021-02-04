@@ -1,6 +1,5 @@
 const player = require("./players");
 const computer = require("./AI");
-// const gesture = require("./gestures");
 const prompt = require("prompt-sync")();
 
 class Game {
@@ -13,7 +12,7 @@ class Game {
     //Initiliaze Game
     console.log(`... ROCK | PAPER | SCISSORS | LIZARD | SPOCK ...\n`);
     console.log(
-      `Please select a mode to play:\n\n1 for Human Vs. Human\n2 for Human Vs. Computer\n3 to Exit`
+      `Please select a mode to play:\n\n1 for Human👱 Vs. Human👱\n2 for Human👱 Vs. Computer👾\n3 to Exit\n----`
     );
     let mode = +prompt();
     return mode;
@@ -26,13 +25,13 @@ class Game {
 
     switch (mode) {
       case 1:
-        console.log(`Enter  Player 1's name:`);
+        console.log(`Enter  Player 1's name:\n----`);
         players.push(prompt());
-        console.log(`Enter  Player 2's name:`);
+        console.log(`Enter  Player 2's name:\n----`);
         players.push(prompt());
         break;
       case 2:
-        console.log(`Enter  Player's name:`);
+        console.log(`Enter  Player's name:\n----`);
         players.push(prompt());
         players.push("Computer");
         break;
@@ -46,7 +45,6 @@ class Game {
   }
   assignPlayers() {
     let players = this.selectMode();
-    // let player1, player2;
     if (players.length > 0) {
       this.player1 = new player();
       this.player2 = players[1] == "Computer" ? new computer() : new player();
@@ -55,102 +53,102 @@ class Game {
       this.player2.name = players[1];
 
       console.log(
-        `${this.player1.name} Vs. ${this.player2.name}\n\nGame Loading...`
+        `${this.player1.name} Vs. ${this.player2.name}\nGame Loading...`
       );
       console.log(`Get ready...`);
-      console.log(`GO!!!\n\n`);
+      console.log(`GO!!!\n\n----`);
     }
-    //return [this.player1, this.player2]; // store instances in array
   }
+
   compareGestures(player1Gesture, player2Gesture) {
     switch (player1Gesture) {
       case "Rock":
         if (player2Gesture === "Paper") {
-          console.log(`Paper Covers Rock`);
+          console.log(`---> Paper📜 Covers Rock🌋\n----`);
           this.player2.score++;
         }
         if (player2Gesture === "Scissors") {
-          console.log(`Rock Crushes Scissors`);
+          console.log(`---> Rock🌋 Crushes Scissors✄\n----`);
           this.player1.score++;
         }
         if (player2Gesture === "Lizard") {
-          console.log(`Rock Crushes Lizard`);
+          console.log(`---> Rock🌋 Crushes Lizard🦎\n----`);
           this.player1.score++;
         }
         if (player2Gesture === "Spock") {
-          console.log(`Spock Vaporizes Rock`);
+          console.log(`---> Spock🖖 Vaporizes Rock🌋\n----`);
           this.player2.score++;
         }
         break;
       case "Paper":
         if (player2Gesture === "Rock") {
-          console.log(`Paper Covers Rock`);
+          console.log(`---> Paper📜 Covers Rock🌋\n----`);
           this.player1.score++;
         }
         if (player2Gesture === "Scissors") {
-          console.log(`Scissors Cuts Paper`);
+          console.log(`---> Scissors✂️ Cuts Paper📜\n----`);
           this.player2.score++;
         }
         if (player2Gesture === "Lizard") {
-          console.log(`Lizard Eats Paper`);
+          console.log(`---> Lizard🦎 Eats Paper📜\n----`);
           this.player2.score++;
         }
         if (player2Gesture === "Spock") {
-          console.log(`Paper Disproves Spock`);
+          console.log(`---> Paper📜 Disproves Spock🖖\n----`);
           this.player1.score++;
         }
         break;
       case "Scissors":
         if (player2Gesture === "Rock") {
-          console.log(`Rock Crushes Scissors`);
+          console.log(`---> Rock🌋 Crushes Scissors✂️\n----`);
           this.player2.score++;
         }
         if (player2Gesture === "Paper") {
-          console.log(`Scissors Cuts Paper`);
+          console.log(`---> Scissors✂️ Cuts Paper📜\n----`);
           this.player1.score++;
         }
         if (player2Gesture === "Lizard") {
-          console.log(`Scissors Decapitates Lizard`);
+          console.log(`---> Scissors✂️ Decapitates Lizard🦎\n----`);
           this.player1.score++;
         }
         if (player2Gesture === "Spock") {
-          console.log(`Spock Smashes Scissors`);
+          console.log(`---> Spock🖖 Smashes Scissors✂️\n----`);
           this.player2.score++;
         }
         break;
       case "Lizard":
         if (player2Gesture === "Rock") {
-          console.log(`Rock Crushes Lizard`);
+          console.log(`---> Rock🌋 Crushes Lizard🦎\n----`);
           this.player2.score++;
         }
         if (player2Gesture === "Paper") {
-          console.log(`Lizard Eats Paper`);
+          console.log(`---> Lizard🦎 Eats Paper📜\n----`);
           this.player1.score++;
         }
         if (player2Gesture === "Scissors") {
-          console.log(`Scissors Decapitates Lizard`);
+          console.log(`---> Scissors✂️ Decapitates Lizard🦎\n----`);
           this.player2.score++;
         }
         if (player2Gesture === "Spock") {
-          console.log(`Lizard Poisons Spock`);
+          console.log(`---> Lizard🦎 Poisons Spock🖖\n----`);
           this.player1.score++;
         }
         break;
       case "Spock":
         if (player2Gesture === "Rock") {
-          console.log(`Spock Vaporizes Rock`);
+          console.log(`---> Spock🖖 Vaporizes Rock🌋\n----`);
           this.player1.score++;
         }
         if (player2Gesture === "Paper") {
-          console.log(`Paper Disproves Spock`);
+          console.log(`---> Paper📜 Disproves Spock🖖\n----`);
           this.player2.score++;
         }
         if (player2Gesture === "Scissors") {
-          console.log(`Spock Smashes Scissors`);
+          console.log(`---> Spock🖖 Smashes Scissors✂️\n----`);
           this.player1.score++;
         }
         if (player2Gesture === "Lizard") {
-          console.log(`Lizard Poisons Spock`);
+          console.log(`---> Lizard🦎 Poisons Spock🖖\n----`);
           this.player2.score++;
         }
         break;
@@ -159,17 +157,30 @@ class Game {
 
   startGame() {
     // let [player1, player2] = this.assignPlayers();
+    let winner;
     this.assignPlayers();
-    this.player1.makeGesture();
-    this.player2.makeGesture();
 
     let round = 0;
     while (this.player1.score < 3 && this.player2.score < 3) {
+      // Game is a best of 3, Game ends when any of the players gets 3 points
+      this.player1.makeGesture();
+      this.player2.makeGesture();
+      if (this.player1.currentGesture === this.player2.currentGesture) {
+        console.log(`VOILA! You both made same gesture. Go again!\n----`);
+      }
       this.compareGestures(
         this.player1.currentGesture,
         this.player2.currentGesture
       );
+      round++;
     }
+    winner =
+      this.player1.score > this.player2.score
+        ? this.player1.name
+        : this.player2.name;
+    console.log(
+      `\nTotal Rounds Played: ${round}\nFINAL SCORE --> ${this.player1.name}: ${this.player1.score} | ${this.player2.name}: ${this.player2.score}\n\nWINNER: ${winner} 🏆`
+    );
   }
 }
 

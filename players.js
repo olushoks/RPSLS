@@ -3,19 +3,20 @@ const gesture = require("./gestures");
 
 class Players {
   constructor() {
+    this.name;
     this.score = 0;
     this.gestures = gesture; // array of possible gestures
     this.currentGesture;
   }
   makeGesture() {
     let gestureIndex;
-    console.log(`Your turn ${this.name}\n`);
+    console.log(`---> Your turn ${this.name}\n`);
     console.log(
-      `Make your gesture:\n\n1 for ROCK | 2 for PAPER | 3 for SCISSORS | 4 for Lzard | 5 for SPOCK`
+      `Make your gesture:\n\n1 for ROCK🌋 | 2 for PAPER📜 | 3 for SCISSORS✂️ | 4 for Lzard🦎 | 5 for SPOCK🖖\n----`
     );
     gestureIndex = +prompt();
     this.currentGesture = this.gestures[gestureIndex - 1];
-    console.log(this.currentGesture);
+    console.log(`---> ${this.name} gestures ${this.currentGesture}\n----`);
   }
 }
 
