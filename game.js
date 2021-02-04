@@ -1,5 +1,6 @@
 const player = require("./players");
 const computer = require("./AI");
+// const gesture = require("./gestures");
 const prompt = require("prompt-sync")();
 
 class Game {
@@ -39,7 +40,6 @@ class Game {
         this.selectMode();
     }
     return players;
-    // console.log(players);
   }
   assignPlayers() {
     let players = this.selectMode();
@@ -55,12 +55,118 @@ class Game {
       console.log(`Get ready...`);
       console.log(`GO!!!\n\n`);
     }
-    return [player1, player2];
+    return [player1, player2]; // store instances in array
   }
+  compareGestures(player1Gesture, player2Gesture) {
+    switch (player1Gesture) {
+      case "Rock":
+        (function () {
+          if (player2Gesture === "Paper") {
+            console.log(`Paper Covers Rock`);
+            player2.score++;
+          }
+          if (player2Gesture === "Scissors") {
+            console.log(`Rock Crushes Scissors`);
+            player1.score++;
+          }
+          if (player2Gesture === "Lizard") {
+            console.log(`Rock Crushes Lizard`);
+            player1.score++;
+          }
+          if (player2Gesture === "Spock") {
+            console.log(`Spock Vaporizes Rock`);
+            player2.score++;
+          }
+        })();
+        break;
+      case "Paper":
+        (function () {
+          if (player2Gesture === "Rock") {
+            console.log(`Paper Covers Rock`);
+            player1.score++;
+          }
+          if (player2Gesture === "Scissors") {
+            console.log(`Scissors Cuts Paper`);
+            player2.score++;
+          }
+          if (player2Gesture === "Lizard") {
+            console.log(`Lizard Eats Paper`);
+            player2.score++;
+          }
+          if (player2Gesture === "Spock") {
+            console.log(`Paper Disproves Spock`);
+            player1.score++;
+          }
+        })();
+        break;
+      case "Scissors":
+        (function () {
+          if (player2Gesture === "Rock") {
+            console.log(`Rock Crushes Scissors`);
+            player2.score++;
+          }
+          if (player2Gesture === "Paper") {
+            console.log(`Scissors Cuts Paper`);
+            player1.score++;
+          }
+          if (player2Gesture === "Lizard") {
+            console.log(`Scissors Decapitates Lizard`);
+            player1.score++;
+          }
+          if (player2Gesture === "Spock") {
+            console.log(`Spock Smashes Scissors`);
+            player2.score++;
+          }
+        })();
+        break;
+      case "Lizard":
+        (function () {
+          if (player2Gesture === "Rock") {
+            console.log(`Rock Crushes Lizard`);
+            player2.score++;
+          }
+          if (player2Gesture === "Paper") {
+            console.log(`Lizard Eats Paper`);
+            player1.score++;
+          }
+          if (player2Gesture === "Scissors") {
+            console.log(`Scissors Decapitates Lizard`);
+            player2.score++;
+          }
+          if (player2Gesture === "Spock") {
+            console.log(`Lizard Poisons Spock`);
+            player1.score++;
+          }
+        })();
+        break;
+      case "Spock":
+        (function () {
+          if (player2Gesture === "Rock") {
+            console.log(`Spock Vaporizes Rock`);
+            player1.score++;
+          }
+          if (player2Gesture === "Paper") {
+            console.log(`Paper Disproves Spock`);
+            player2.score++;
+          }
+          if (player2Gesture === "Scissors") {
+            console.log(`Spock Smashes Scissors`);
+            player1.score++;
+          }
+          if (player2Gesture === "Lizard") {
+            console.log(`Lizard Poisons Spock`);
+            player2.score++;
+          }
+        })();
+        break;
+    }
+  }
+
   startGame() {
-    let [player1, player2] = this.assignPlayers();
+    let [player1, player2] = this.assignPlayers(); // Destructure Array
     player1.makeGesture();
     player2.makeGesture();
+    this.compareGestures(player1.currentGesture, player2.currentGesture);
   }
 }
 
