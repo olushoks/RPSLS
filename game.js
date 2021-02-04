@@ -1,3 +1,5 @@
+"use strict";
+
 const player = require("./players");
 const computer = require("./AI");
 const prompt = require("prompt-sync")();

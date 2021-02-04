@@ -1,3 +1,5 @@
+"use strict";
+
 const player = require("./players");
 
 class AI extends player {

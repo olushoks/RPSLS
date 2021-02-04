@@ -1,3 +1,5 @@
+"use strict";
+
 const prompt = require("prompt-sync")();
 const gesture = require("./gestures");
 
