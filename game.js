@@ -12,7 +12,7 @@ class Game {
     //Initiliaze Game
     console.log(`... ROCK | PAPER | SCISSORS | LIZARD | SPOCK ...\n`);
     console.log(
-      `Please select a mode to play:\n\n1 for Human👱 Vs. Human👱\n2 for Human👱 Vs. Computer👾\n3 to Exit\n----`
+      `Please select a mode to play:\n\n1 for Human👱 Vs. Human👱\n2 for Human👱 Vs. Computer🎮\n3 for Computer🎮 Vs. Computer🎮\n4 to Exit\n----`
     );
     let mode = +prompt();
     return mode;
@@ -36,9 +36,8 @@ class Game {
         players.push("Computer");
         break;
       case 3:
-        console.log(`Enter  Player's name:\n----`);
-        players.push(prompt());
-        players.push("Computer");
+        console.log(`Setting Default names for Computer`);
+        players.push("Computer", "Computer");
         break;
       case 4:
         console.log(`Exiting...Goodbye `);
@@ -52,11 +51,14 @@ class Game {
     let players = this.selectMode();
     if (players.length > 0) {
       //Assign players only if user chooses to play
-      this.player1 = new player();
-      this.player2 = players[1] == "Computer" ? new computer() : new player();
+      this.player1 = players[0] === "Computer" ? new computer() : new player();
+      this.player2 = players[1] === "Computer" ? new computer() : new player();
 
-      this.player1.name = players[0];
-      this.player2.name = players[1];
+      this.player1.name =
+        players[0] === "Computer" ? `${players[0]}-1` : players[0];
+      this.player2.name =
+        players[1] === "Computer" ? `${players[1]}-2` : players[1];
+      //this.player2.name = players[1];
 
       console.log(
         `${this.player1.name} Vs. ${this.player2.name}\nGame Loading...`
@@ -164,6 +166,7 @@ class Game {
     // Function to play again after game ends
     console.log(`Would you  like to play again?\nEnter 1 for YES 2 for NO`);
     let response = +prompt();
+    console.log(`\n-------`);
     if (response === 1) {
       this.startGame();
     } else if (response === 2) {
