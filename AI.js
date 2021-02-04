@@ -5,7 +5,7 @@ class AI extends player {
     super();
   }
   randomGesture() {
-    let random = Math.trunc(Math.random() * 5);
+    let random = Math.trunc(Math.random() * this.gestures.length);
     return random;
   }
   makeGesture() {
