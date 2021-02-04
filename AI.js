@@ -1,6 +1,7 @@
 const player = require("./players");
 
 class AI extends player {
+  // Inherit name, score, and gestures from Parent
   constructor() {
     super();
   }
