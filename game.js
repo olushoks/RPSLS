@@ -56,8 +56,13 @@ class Game {
 
       this.player1.name =
         players[0] === "Computer" ? `${players[0]}-1` : players[0];
-      this.player2.name =
-        players[1] === "Computer" ? `${players[1]}-2` : players[1];
+
+      if (players[0] !== "Computer" && players[1] == "Computer") {
+        this.player2.name = "Computer";
+      } else {
+        this.player2.name =
+          players[1] === "Computer" ? `${players[1]}-2` : players[1];
+      }
       //this.player2.name = players[1];
 
       console.log(
