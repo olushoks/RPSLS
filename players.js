@@ -10,7 +10,6 @@ class Players {
   }
   makeGesture() {
     let gestureIndex;
-    //console.log(`🚥 Your turn ${this.name}\n`);
     console.log(
       `🚥 Your turn ${this.name}\nMake your gesture: 1 for ROCK🌋 | 2 for PAPER📜 | 3 for SCISSORS✂️ | 4 for Lzard🦎 | 5 for SPOCK🖖\n----`
     );

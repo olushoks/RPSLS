@@ -19,9 +19,9 @@ class Game {
   }
 
   selectMode() {
-    // Select a mode and return players
+    // Select a mode and return players' names
     let mode = this.gameInit();
-    let players = []; // Store players name is array based on users choice
+    let players = []; // Store players name is array based on user choice
 
     switch (mode) {
       case 1:
@@ -54,7 +54,7 @@ class Game {
       this.player1 = players[0] === "Computer" ? new computer() : new player();
       this.player2 = players[1] === "Computer" ? new computer() : new player();
 
-      //Assign names based on condition
+      //Assign names to computer based on condition
       this.player1.name =
         players[0] === "Computer" ? `${players[0]}-1` : players[0];
 
@@ -64,7 +64,6 @@ class Game {
         this.player2.name =
           players[1] === "Computer" ? `${players[1]}-2` : players[1];
       }
-      //this.player2.name = players[1];
 
       console.log(
         `${this.player1.name} Vs. ${this.player2.name}\nGame Loading...`
@@ -168,7 +167,7 @@ class Game {
         break;
     }
   }
-  restartGame() {
+  playAgain() {
     // Function to play again after game ends
     console.log(`Would you  like to play again?\nEnter 1 for YES 2 for NO`);
     let response = +prompt();
@@ -177,11 +176,13 @@ class Game {
       this.startGame();
     } else if (response === 2) {
       console.log(`Thanks for playing this version of RPSLS. Goodbye!`);
+    } else if (response !== 1 || response !== 2) {
+      console.log(`Invalid response..\n`);
+      this.playAgain();
     }
   }
 
   startGame() {
-    // let [player1, player2] = this.assignPlayers();
     let winner;
     this.assignPlayers();
 
@@ -208,7 +209,7 @@ class Game {
       console.log(
         `\nTotal Rounds Played: ${round}\nFINAL SCORE --> ${this.player1.name}: ${this.player1.score} | ${this.player2.name}: ${this.player2.score}\n\nWINNER: ${winner} 🏆\n----`
       );
-      this.restartGame();
+      this.playAgain();
     }
   }
 }

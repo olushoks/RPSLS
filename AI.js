@@ -13,7 +13,6 @@ class AI extends player {
     let gestureIndex = this.randomGesture();
     this.currentGesture = this.gestures[gestureIndex];
     console.log(`✅ ${this.name} gestures: ${this.currentGesture}\n`);
-    /// console.log(this.currentGesture);
   }
 }
 
