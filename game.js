@@ -36,6 +36,11 @@ class Game {
         players.push("Computer");
         break;
       case 3:
+        console.log(`Enter  Player's name:\n----`);
+        players.push(prompt());
+        players.push("Computer");
+        break;
+      case 4:
         console.log(`Exiting...Goodbye `);
         break;
       default:
@@ -158,7 +163,7 @@ class Game {
   restartGame() {
     // Function to play again after game ends
     console.log(`Would you  like to play again?\nEnter 1 for YES 2 for NO`);
-    let response = prompt();
+    let response = +prompt();
     if (response === 1) {
       this.startGame();
     } else if (response === 2) {
@@ -194,8 +199,8 @@ class Game {
       console.log(
         `\nTotal Rounds Played: ${round}\nFINAL SCORE --> ${this.player1.name}: ${this.player1.score} | ${this.player2.name}: ${this.player2.score}\n\nWINNER: ${winner} 🏆\n----`
       );
+      this.restartGame();
     }
-    //this.restartGame();
   }
 }
 
