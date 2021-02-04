@@ -54,6 +54,7 @@ class Game {
       this.player1 = players[0] === "Computer" ? new computer() : new player();
       this.player2 = players[1] === "Computer" ? new computer() : new player();
 
+      //Assign names based on condition
       this.player1.name =
         players[0] === "Computer" ? `${players[0]}-1` : players[0];
 
